@@ -19,7 +19,7 @@ export const getQuery = async (rl) => {
     }
     return query;
   } catch (error) {
-    console.log(error.message);
+    console.log(error.message + "\n");
   }
 };
 
@@ -50,7 +50,7 @@ export const sqlQueryAnalyze = (query) => {
       ...analyzedQuery,
     };
   } catch (error) {
-    console.error(error);
+    console.error(error.message + "\n");
   }
 };
 
@@ -66,7 +66,7 @@ export const getSqlAction = (queryArr) => {
     }
     return action;
   } catch (error) {
-    console.error(error);
+    console.error(error.message + "\n");
   }
 };
 
@@ -167,7 +167,7 @@ export const validateQueryObject = (queryObj) => {
     }
     return true;
   } catch (error) {
-    console.log(error.message);
+    console.log(error.message + "\n");
     return false;
   }
 };
@@ -185,7 +185,7 @@ export const validateQueryObjectInsert = (queryObj) => {
     }
     return true;
   } catch (error) {
-    console.log(error.message);
+    console.log(error.message + "\n");
   }
 };
 
@@ -210,10 +210,8 @@ export const validateFieldsValues = (queryObj) => {
     } else if (queryObj.fields.length > 0) {
       if (!validateUniqueFields(queryObj.fields))
         throw new Error("Each column must be set only once.");
-      //check if fields and values has same length
       if (queryObj.fields.length !== queryObj.values.length)
         throw new Error("All specified columns must have values");
-      //validate fields[i] vs values[i]
       for (let i = 0; i < queryObj.fields.length; i++) {
         switch (queryObj.fields[i]) {
           case "id":
@@ -238,7 +236,7 @@ export const validateFieldsValues = (queryObj) => {
     }
     return true;
   } catch (error) {
-    console.log(error.message);
+    console.log(error.message + "\n");
   }
 };
 
@@ -331,7 +329,7 @@ export const searchWithNoId = async (queryObj, pathUsers) => {
     });
     return;
   } catch (error) {
-    console.log(error.message);
+    console.log(error.message + "\n");
   }
 };
 
